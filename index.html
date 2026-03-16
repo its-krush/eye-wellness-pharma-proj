@@ -1,6 +1,788 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title></title>
-  </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AquaDrop — Clarity in Every Drop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --lavender-50: #f3f1fb;
+      --lavender-100: #e6e2f7;
+      --lavender-200: #cdc6f0;
+      --lavender-400: #9b8fe3;
+      --lavender-600: #6b5cc4;
+      --lavender-800: #3d3280;
+      --lavender-900: #211a52;
+      --gray-50: #f8f8f7;
+      --gray-100: #f0efee;
+      --gray-300: #c5c4c0;
+      --gray-500: #888785;
+      --gray-700: #4a4946;
+      --text-dark: #1a1530;
+      --text-muted: #6b6880;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'DM Sans', system-ui, sans-serif;
+      --nav-h: 72px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--text-dark);
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(155,143,227,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text-dark);
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      color: var(--lavender-600);
+    }
+
+    .logo-text {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--lavender-800);
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--lavender-600);
+    }
+
+    /* ── PAGES ── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: calc(var(--nav-h) + 40px) 5% 80px;
+      background: linear-gradient(160deg, #ede9f8 0%, #f5f3fb 40%, #f8f8f7 70%, #ffffff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(155,143,227,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 360px; height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(107,92,196,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--lavender-600);
+      background: var(--lavender-50);
+      border: 1px solid var(--lavender-200);
+      border-radius: 100px;
+      padding: 6px 16px;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.1s forwards;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text-dark);
+      letter-spacing: -0.02em;
+      max-width: 700px;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.25s forwards;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      color: var(--text-muted);
+      font-weight: 300;
+      max-width: 500px;
+      line-height: 1.75;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.4s forwards;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.55s forwards;
+    }
+
+    .btn-primary {
+      background: var(--lavender-600);
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover { background: var(--lavender-800); transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--lavender-600);
+      border: 1.5px solid var(--lavender-400);
+      padding: 13px 32px;
+      border-radius: 100px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-outline:hover { background: var(--lavender-50); transform: translateY(-1px); }
+
+    /* ── SCROLL INDICATOR ── */
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.2s forwards;
+    }
+
+    .scroll-hint span {
+      font-size: 0.72rem;
+      color: var(--gray-500);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .scroll-dot {
+      width: 1.5px;
+      height: 36px;
+      background: linear-gradient(to bottom, var(--lavender-400), transparent);
+      border-radius: 2px;
+      animation: scrollBounce 1.8s ease infinite;
+    }
+
+    /* ── PRODUCTS SECTION ── */
+    .products-section {
+      padding: 100px 5%;
+      background: var(--gray-50);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 300;
+      max-width: 440px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── CAROUSEL ── */
+    .carousel-wrap {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .carousel-track {
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 20px;
+      width: 100%;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(155,143,227,0.12);
+      overflow: hidden;
+    }
+
+    .product-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      background: linear-gradient(145deg, #f8f6ff 0%, #fff 60%);
+    }
+
+    .bottle-svg {
+      width: 110px;
+      filter: drop-shadow(0 8px 24px rgba(107,92,196,0.18));
+    }
+
+    .product-name {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      text-align: center;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      background: #fff;
+      border: 1px solid var(--lavender-200);
+      color: var(--lavender-600);
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.2s;
+      box-shadow: 0 2px 12px rgba(107,92,196,0.1);
+    }
+
+    .carousel-btn:hover { background: var(--lavender-50); border-color: var(--lavender-400); }
+    .carousel-btn.prev { left: -22px; }
+    .carousel-btn.next { right: -22px; }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--lavender-200);
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .dot.active { background: var(--lavender-600); width: 22px; border-radius: 4px; }
+
+    /* ── FEATURES STRIP ── */
+    .features-strip {
+      padding: 80px 5%;
+      background: #fff;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .feature-item {
+      text-align: center;
+    }
+
+    .feature-icon {
+      width: 48px; height: 48px;
+      background: var(--lavender-50);
+      border: 1px solid var(--lavender-100);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      color: var(--lavender-600);
+    }
+
+    .feature-item h3 {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .feature-item p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── ABOUT PAGE ── */
+    .about-page {
+      padding: calc(var(--nav-h) + 80px) 5% 100px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .about-page h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 40px;
+      letter-spacing: -0.02em;
+    }
+
+    .about-page p {
+      font-size: 1rem;
+      color: var(--gray-700);
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 24px;
+      max-width: 680px;
+    }
+
+    .about-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--lavender-400);
+      border-radius: 2px;
+      margin: 40px 0;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-top: 56px;
+    }
+
+    .stat-item h3 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--lavender-600);
+      margin-bottom: 4px;
+    }
+
+    .stat-item p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 5%;
+      border-top: 1px solid rgba(155,143,227,0.14);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    footer .logo-text { font-size: 1rem; }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      font-weight: 300;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 0.7; }
+    }
+
+    @keyframes scrollBounce {
+      0%, 100% { transform: scaleY(1); opacity: 0.7; }
+      50% { transform: scaleY(1.4); opacity: 0.3; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .carousel-btn.prev { left: 4px; }
+      .carousel-btn.next { right: 4px; }
+      .about-stats { gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="logo" href="#" onclick="showPage('home')">
+      <svg class="logo-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 3C14 3 7 11 7 17a7 7 0 0 0 14 0c0-6-7-14-7-14z" fill="currentColor" opacity="0.85"/>
+        <path d="M10 20c0 2.2 1.8 4 4 4" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">AquaDrop</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#" id="nav-home" class="active" onclick="showPage('home', event)">Home</a></li>
+      <li><a href="#" id="nav-about" onclick="showPage('about', event)">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- HOME PAGE -->
+  <div id="page-home" class="page active">
+
+    <!-- HERO -->
+    <section class="hero">
+      <span class="hero-badge">Ophthalmologist Formulated</span>
+      <h1>Clarity in Every Drop</h1>
+      <p>Gentle, effective eye care crafted for comfort. Experience soothing relief that feels as natural as it looks.</p>
+      <div class="hero-cta">
+        <a class="btn-primary" href="#products" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'}); return false;">Explore Products</a>
+        <a class="btn-outline" href="#" onclick="showPage('about', event)">Learn More</a>
+      </div>
+      <div class="scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-dot"></div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="products-section" id="products">
+      <div class="section-header reveal">
+        <h2>Our Products</h2>
+        <p>Precision-formulated drops for every kind of eye.</p>
+      </div>
+
+      <div class="carousel-wrap">
+        <div class="carousel-track">
+          <div class="carousel-inner" id="carousel-inner">
+
+            <!-- Slide 1 -->
+            <div class="carousel-slide">
+              <div class="product-card">
+                <div class="product-placeholder">
+                  <svg class="bottle-svg" viewBox="0 0 100 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="38" y="2" width="24" height="18" rx="4" fill="#d8d2f5"/>
+                    <path d="M32 20h36v8l8 14v96a10 10 0 0 1-10 10H34a10 10 0 0 1-10-10V42l8-14V20z" fill="url(#g1)"/>
+                    <path d="M24 42h52v8H24z" fill="rgba(255,255,255,0.25)"/>
+                    <text x="50" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="600" fill="white">Eye</text>
+                    <text x="50" y="114" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="rgba(255,255,255,0.85)">DROP</text>
+                    <text x="50" y="136" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(255,255,255,0.65)">PURITE FREE</text>
+                    <defs>
+                      <linearGradient id="g1" x1="24" y1="20" x2="76" y2="168" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#c4b8f0"/>
+                        <stop offset="100%" stop-color="#7b6ee0"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+              <p class="product-name">AquaDrop Classic Eye Drops</p>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-slide">
+              <div class="product-card">
+                <div class="product-placeholder">
+                  <svg class="bottle-svg" viewBox="0 0 100 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="38" y="2" width="24" height="18" rx="4" fill="#b8e8d8"/>
+                    <path d="M32 20h36v8l8 14v96a10 10 0 0 1-10 10H34a10 10 0 0 1-10-10V42l8-14V20z" fill="url(#g2)"/>
+                    <path d="M24 42h52v8H24z" fill="rgba(255,255,255,0.25)"/>
+                    <text x="50" y="95" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="600" fill="white">Hydra</text>
+                    <text x="50" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="rgba(255,255,255,0.85)">RELIEF</text>
+                    <text x="50" y="136" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(255,255,255,0.65)">PRESERVATIVE FREE</text>
+                    <defs>
+                      <linearGradient id="g2" x1="24" y1="20" x2="76" y2="168" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#a8d8c8"/>
+                        <stop offset="100%" stop-color="#3db88a"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+              <p class="product-name">AquaDrop HydraRelief — Preservative Free</p>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-slide">
+              <div class="product-card">
+                <div class="product-placeholder">
+                  <svg class="bottle-svg" viewBox="0 0 100 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="38" y="2" width="24" height="18" rx="4" fill="#f5cce0"/>
+                    <path d="M32 20h36v8l8 14v96a10 10 0 0 1-10 10H34a10 10 0 0 1-10-10V42l8-14V20z" fill="url(#g3)"/>
+                    <path d="M24 42h52v8H24z" fill="rgba(255,255,255,0.25)"/>
+                    <text x="50" y="95" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="600" fill="white">Allergy</text>
+                    <text x="50" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="rgba(255,255,255,0.85)">CALM</text>
+                    <text x="50" y="136" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(255,255,255,0.65)">ANTIHISTAMINE</text>
+                    <defs>
+                      <linearGradient id="g3" x1="24" y1="20" x2="76" y2="168" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#f0b8d8"/>
+                        <stop offset="100%" stop-color="#d05090"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+              <p class="product-name">AquaDrop AllergyCalm Drops</p>
+            </div>
+
+          </div>
+        </div>
+
+        <button class="carousel-btn prev" onclick="moveCarousel(-1)" aria-label="Previous">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="carousel-btn next" onclick="moveCarousel(1)" aria-label="Next">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <div class="carousel-dots" id="dots"></div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features-strip">
+      <div class="features-grid">
+        <div class="feature-item reveal">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2C6 2 2 6 2 11s4 9 9 9 9-4 9-9-4-9-9-9z" stroke="currentColor" stroke-width="1.5"/><path d="M11 7v4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Fast-Acting Relief</h3>
+          <p>Begins working within 60 seconds to soothe dryness, redness and irritation.</p>
+        </div>
+        <div class="feature-item reveal" style="transition-delay:0.1s">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11s2-5 7-5 7 5 7 5-2 5-7 5-7-5-7-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="11" cy="11" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h3>Ophthalmologist Tested</h3>
+          <p>Clinically reviewed for safety on sensitive eyes, including contact lens wearers.</p>
+        </div>
+        <div class="feature-item reveal" style="transition-delay:0.2s">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3l2 5h5l-4 3 1.5 5L11 13l-4.5 3L8 11 4 8h5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>No Harsh Preservatives</html>
+          <p>Gentle, preservative-conscious formula that's kind to your eye's natural balance.</p>
+        </div>
+        <div class="feature-item reveal" style="transition-delay:0.3s">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2c-2 3-5 6-5 10a5 5 0 0 0 10 0c0-4-3-7-5-10z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Hydration Science</h3>
+          <p>Advanced hyaluronic acid base locks in moisture for long-lasting eye comfort.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 3C14 3 7 11 7 17a7 7 0 0 0 14 0c0-6-7-14-7-14z" fill="currentColor" opacity="0.85"/>
+        </svg>
+        <span class="logo-text">AquaDrop</span>
+      </div>
+      <p>© 2026 AquaDrop. All rights reserved.</p>
+    </footer>
+
+  </div><!-- end home page -->
+
+  <!-- ABOUT PAGE -->
+  <div id="page-about" class="page">
+    <div class="about-page">
+      <h1>About AquaDrop</h1>
+      <p>AquaDrop was born from a simple belief: eye care should feel as natural as blinking. We combine advanced hydration science with gentle, preservative-conscious formulas to deliver comfort that lasts.</p>
+      <p>Our team of ophthalmologists and biochemists work together to create drops that respect the delicate balance of your eyes — no unnecessary additives, no harsh chemicals, just pure relief.</p>
+      <p>Whether you spend your days in front of screens, under bright lights, or in dry climates, AquaDrop is designed to keep your vision crisp and your eyes refreshed.</p>
+
+      <div class="about-divider"></div>
+
+      <div class="about-stats">
+        <div class="stat-item">
+          <h3>98%</h3>
+          <p>Patient satisfaction rate</p>
+        </div>
+        <div class="stat-item">
+          <h3>12+</h3>
+          <p>Years of clinical research</p>
+        </div>
+        <div class="stat-item">
+          <h3>3M+</h3>
+          <p>Happy users worldwide</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 3C14 3 7 11 7 17a7 7 0 0 0 14 0c0-6-7-14-7-14z" fill="currentColor" opacity="0.85"/>
+        </svg>
+        <span class="logo-text">AquaDrop</span>
+      </div>
+      <p>© 2026 AquaDrop. All rights reserved.</p>
+    </footer>
+  </div><!-- end about page -->
+
+  <script>
+    // ── PAGE SWITCHING ──
+    function showPage(name, e) {
+      if (e) e.preventDefault();
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      document.getElementById('page-' + name).classList.add('active');
+      document.getElementById('nav-' + name).classList.add('active');
+      window.scrollTo(0, 0);
+      initReveal();
+    }
+
+    // ── CAROUSEL ──
+    let current = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const total = slides.length;
+    const inner = document.getElementById('carousel-inner');
+    const dotsEl = document.getElementById('dots');
+
+    slides.forEach((_, i) => {
+      const d = document.createElement('div');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.onclick = () => goTo(i);
+      dotsEl.appendChild(d);
+    });
+
+    function goTo(n) {
+      current = (n + total) % total;
+      inner.style.transform = `translateX(-${current * 100}%)`;
+      document.querySelectorAll('.dot').forEach((d, i) =>
+        d.classList.toggle('active', i === current));
+    }
+
+    function moveCarousel(dir) { goTo(current + dir); }
+
+    // Auto-advance
+    setInterval(() => moveCarousel(1), 4000);
+
+    // ── SCROLL REVEAL ──
+    function initReveal() {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal').forEach(el => {
+        el.classList.remove('visible');
+        obs.observe(el);
+      });
+    }
+
+    initReveal();
+  </script>
+</body>
 </html>
