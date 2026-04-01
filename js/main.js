@@ -1,54 +1,62 @@
-document.addEventListener('DOMContentLoaded', () => {
-  
-  // 1. SMOOTH SCROLLING FOR NAVIGATION
-  // This handles the "Our Products" link and any other anchor tags
-  const smoothScroll = () => {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-          // Adjust 80 to match your navbar height
-          const navHeight = 80; 
-          const targetPosition = targetElement.offsetTop - navHeight;
-
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-  };
-
-  // 2. MODERN INTERSECTION OBSERVER (SCROLL REVEAL)
-  // This makes elements with the 'reveal' class fade in as they enter the screen
-  const initReveal = () => {
-    const observerOptions = {
-      root: null, // use the viewport
-      threshold: 0.15, // 15% of the element must be visible
-      rootMargin: "0px"
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Add the 'visible' class defined in your CSS
-          entry.target.classList.add('visible');
-          // Once animated, stop observing to save system resources
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    // Select all elements you want to animate
-    const revealElements = document.querySelectorAll('.reveal');
-    revealElements.forEach(el => observer.observe(el));
-  };
-
-  // EXECUTE FUNCTIONS
-  smoothScroll();
-  initReveal();
+// 1. NAVIGATION SCROLL EFFECT
+window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
 });
+
+// 2. SMOOTH SCROLL FOR ANCHOR LINKS
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const navHeight = 80;
+            const targetPosition = target.offsetTop - navHeight;
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// 3. SCROLL REVEAL ANIMATION
+const revealElements = document.querySelectorAll('.reveal');
+
+const revealOnScroll = () => {
+    const windowHeight = window.innerHeight;
+    
+    revealElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < windowHeight - elementVisible) {
+            element.classList.add("active");
+        }
+    });
+};
+
+window.addEventListener("scroll", revealOnScroll);
+
+// Check on load in case elements are already in view
+window.addEventListener('load', revealOnScroll);
+
+// 4. ACTIVE NAV LINK
+function setActiveNavLink() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const linkPage = link.getAttribute('href').split('/').pop();
+        if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+            link.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('load', setActiveNavLink);
