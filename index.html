@@ -10,12 +10,10 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a class="logo" href="index.html">
       <svg class="logo-icon" viewBox="0 0 28 28" fill="none">
         <path d="M14 3C14 3 7 11 7 17a7 7 0 0 0 14 0c0-6-7-14-7-14z" fill="currentColor" opacity="0.85"/>
-        <path d="M10 20c0 2.2 1.8 4 4 4" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
       <span class="logo-text">AquaDrop</span>
     </a>
@@ -26,133 +24,81 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <span class="hero-badge">Ophthalmologist Formulated</span>
     <h1>Clarity in Every Drop</h1>
-    <p>Gentle, effective eye care crafted for comfort. Experience soothing relief that feels as natural as it looks.</p>
+    <p>Gentle, effective eye care crafted for comfort.</p>
     <div class="hero-cta">
       <a class="btn-primary" href="#products">Explore Products</a>
-      <a class="btn-outline" href="about.html">Learn More</a>
-    </div>
-    <div class="scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-dot"></div>
     </div>
   </section>
 
-  <!-- PRODUCTS -->
   <section class="products-section" id="products">
     <div class="section-header reveal">
-      <h2>Our Products</h2>
-      <p>Precision-formulated drops for every kind of eye.</p>
+      <h2>Browse Collection</h2>
+      <p>Select a formula to view clinical details and application angles.</p>
     </div>
 
-    <div class="carousel-wrap">
+    <div class="carousel-wrap reveal">
       <div class="carousel-track">
         <div class="carousel-inner" id="carousel-inner">
-
-          <!-- Slide 1 -->
-          <div class="carousel-slide" onclick="openProduct('hytears')">
-            <div class="product-card">
-              <div class="product-placeholder">
-                <img src="images/hytears.png" alt="hytears" class="product-image">
-              </div>
-            </div>
-            <p class="product-name">Hytears Eye Drop</p>
-            <p class="product-price">$18.00</p>
+          <div class="carousel-slide" onclick="showProductDetails('hytears')">
+            <div class="product-card"><img src="images/hytears.png" alt="hytears"></div>
+            <p class="product-name">AquaDrop Classic</p>
           </div>
-
-          <!-- Slide 2 -->
-          <div class="carousel-slide" onclick="openProduct('moseye')">
-            <div class="product-card">
-              <div class="product-placeholder">
-                <img src="images/moseye.jpeg" alt="moseye" class="product-image">
-              </div>
-            </div>
-            <p class="product-name">Moseye Eye Drop</p>
-            <p class="product-price">$24.00</p>
+          <div class="carousel-slide" onclick="showProductDetails('moseye')">
+            <div class="product-card"><img src="images/moseye.jpeg" alt="moseye"></div>
+            <p class="product-name">HydraRelief</p>
           </div>
-
-          <!-- Slide 3 -->
-          <div class="carousel-slide" onclick="openProduct('motoeye')">
-            <div class="product-card">
-              <div class="product-placeholder">
-                <img src="images/motoeye.png" alt="motoeye" class="product-image">
-              </div>
-            </div>
-            <p class="product-name">Motoeye Eye Drop</p>
-            <p class="product-price">$21.00</p>
+          <div class="carousel-slide" onclick="showProductDetails('motoeye')">
+            <div class="product-card"><img src="images/motoeye.png" alt="motoeye"></div>
+            <p class="product-name">AllergyCalm</p>
           </div>
-
-          <!-- Slide 4 -->
-          <div class="carousel-slide" onclick="openProduct('pegeye')">
-            <div class="product-card">
-              <div class="product-placeholder">
-                <img src="images/pegeye.png" alt="pegeye" class="product-image">
-              </div>
-            </div>
-            <p class="product-name">Pegeye Eye Drop</p>
-            <p class="product-price">$21.00</p>
+          <div class="carousel-slide" onclick="showProductDetails('pegeye')">
+            <div class="product-card"><img src="images/pegeye.png" alt="pegeye"></div>
+            <p class="product-name">ReliefPlus</p>
           </div>
-
-          <!-- Slide 5 -->
-          <div class="carousel-slide" onclick="openProduct('tobeye')">
-            <div class="product-card">
-              <div class="product-placeholder">
-                <img src="images/tobeye.jpeg" alt="tobeye" class="product-image">
-              </div>
-            </div>
-            <p class="product-name">Tobeye Eye Drop</p>
-            <p class="product-price">$21.00</p>
+          <div class="carousel-slide" onclick="showProductDetails('tobeye')">
+            <div class="product-card"><img src="images/tobeye.jpeg" alt="tobeye"></div>
+            <p class="product-name">NightGuard</p>
           </div>
-
         </div>
       </div>
-
-      <button class="carousel-btn prev" onclick="moveCarousel(-1)" aria-label="Previous">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button class="carousel-btn next" onclick="moveCarousel(1)" aria-label="Next">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-
-      <div class="carousel-dots" id="dots"></div>
+      <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+      <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <div id="product-modal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeProduct()">&times;</span>
-      <div class="modal-body">
-        <div class="modal-img-wrap">
-          <img id="modal-img" src="" alt="Product">
+  <section id="product-showcase" class="product-details-section">
+    <div class="showcase-container">
+      <div class="showcase-gallery">
+        <div class="main-display">
+          <img id="detail-main-img" src="images/hytears.png" alt="Main View">
         </div>
-        <div class="modal-info">
-          <h2 id="modal-name"></h2>
-          <p class="modal-price" id="modal-price"></p>
-          <div class="divider"></div>
-          <h3>Clinical Indications</h3>
-          <p id="modal-desc"></p>
+        <div class="angle-thumbnails" id="detail-thumbnails">
+          </div>
+      </div>
+
+      <div class="showcase-info">
+        <h2 id="detail-name">Select a Product</h2>
+        <p class="detail-price" id="detail-price">$0.00</p>
+        <div class="detail-divider"></div>
+        <h3>Clinical Overview</h3>
+        <p id="detail-desc">Please select a product above to view detailed clinical indications and usage instructions.</p>
+        <div class="detail-meta">
+          <span>✓ Preservative Free</span>
+          <span>✓ Sterile</span>
+          <span>✓ 10ml</span>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- FOOTER -->
   <footer>
-    <div class="logo">
-      <svg class="logo-icon" viewBox="0 0 28 28" fill="none">
-        <path d="M14 3C14 3 7 11 7 17a7 7 0 0 0 14 0c0-6-7-14-7-14z" fill="currentColor" opacity="0.85"/>
-      </svg>
-      <span class="logo-text">AquaDrop</span>
-    </div>
-    <p>© 2026 AquaDrop. All rights reserved.</p>
+    <p>© 2026 AquaDrop. Premium Eye Wellness.</p>
   </footer>
 
   <script src="js/main.js"></script>
   <script src="js/carousel.js"></script>
-
 </body>
 </html>
