@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products — AquaDrop</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/products.css" />
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a class="logo" href="index.html">
+      <svg class="logo-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 3C14 3 7 11 7 17a7 7 0 0 0 14 0c0-6-7-14-7-14z" fill="currentColor" opacity="0.85"/>
+      </svg>
+      <span class="logo-text">AquaDrop</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html" class="active">Products</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- PRODUCTS PAGE -->
+  <div class="products-page">
+    
+    <!-- Header -->
+    <div class="products-header reveal">
+      <h1>Our Product Range</h1>
+      <p>Precision-engineered ophthalmic solutions for every eye care need. Click on any product to explore detailed clinical information.</p>
+    </div>
+
+    <!-- 2-Column Product Grid -->
+    <div class="products-grid">
+      
+      <!-- Product 1: Hytears -->
+      <div class="product-item reveal" onclick="openProductDetail('hytears')">
+        <div class="product-item-image">
+          <img src="images/hytears.png" alt="Hytears Eye Drop">
+        </div>
+        <div class="product-item-info">
+          <h3>Hytears Eye Drop</h3>
+          <p class="price">$18.00</p>
+          <p class="short-desc">Indicated for mild digital eye strain and environmental dryness.</p>
+        </div>
+      </div>
+
+      <!-- Product 2: Moseye -->
+      <div class="product-item reveal" onclick="openProductDetail('moseye')">
+        <div class="product-item-image">
+          <img src="images/moseye.jpeg" alt="Moseye Eye Drop">
+        </div>
+        <div class="product-item-info">
+          <h3>Moseye Eye Drop</h3>
+          <p class="price">$24.00</p>
+          <p class="short-desc">Preservative-free solution for chronic dry eye and post-operative care.</p>
+        </div>
+      </div>
+
+      <!-- Product 3: Motoeye -->
+      <div class="product-item reveal" onclick="openProductDetail('motoeye')">
+        <div class="product-item-image">
+          <img src="images/motoeye.png" alt="Motoeye Eye Drop">
+        </div>
+        <div class="product-item-info">
+          <h3>Motoeye Eye Drop</h3>
+          <p class="price">$21.00</p>
+          <p class="short-desc">Triple-action antihistamine formula for allergy relief.</p>
+        </div>
+      </div>
+
+      <!-- Product 4: Pegeye -->
+      <div class="product-item reveal" onclick="openProductDetail('pegeye')">
+        <div class="product-item-image">
+          <img src="images/pegeye.png" alt="Pegeye Eye Drop">
+        </div>
+        <div class="product-item-info">
+          <h3>Pegeye Eye Drop</h3>
+          <p class="price">$21.00</p>
+          <p class="short-desc">Advanced formula for optimal vision clarity.</p>
+        </div>
+      </div>
+
+      <!-- Product 5: Tobeye -->
+      <div class="product-item reveal" onclick="openProductDetail('tobeye')">
+        <div class="product-item-image">
+          <img src="images/tobeye.jpeg" alt="Tobeye Eye Drop">
+        </div>
+        <div class="product-item-info">
+          <h3>Tobeye Eye Drop</h3>
+          <p class="price">$21.00</p>
+          <p class="short-desc">Overnight recovery and rejuvenation formula.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAIL MODAL -->
+  <div id="product-detail-modal" class="product-detail-modal">
+    <div class="product-detail-content">
+      
+      <!-- Close Button -->
+      <div class="detail-close" onclick="closeProductDetail()">&times;</div>
+      
+      <div class="detail-layout">
+        
+        <!-- LEFT: Product Images with Carousel -->
+        <div class="detail-images">
+          
+          <!-- Main Image Display -->
+          <div class="main-image-display">
+            <img id="detail-main-img" src="" alt="Product">
+          </div>
+          
+          <!-- Thumbnail Carousel for Side Views -->
+          <div class="thumbnail-carousel" id="thumbnail-carousel">
+            <!-- Thumbnails will be dynamically added via JS -->
+          </div>
+          
+        </div>
+        
+        <!-- RIGHT: Product Information -->
+        <div class="detail-info">
+          
+          <span class="detail-badge">Clinical Grade</span>
+          
+          <h2 id="detail-name"></h2>
+          <p class="detail-price" id="detail-price"></p>
+          
+          <div class="detail-divider"></div>
+          
+          <!-- Full Description -->
+          <div class="detail-section">
+            <h3>About This Product</h3>
+            <p id="detail-full-desc"></p>
+          </div>
+          
+          <div class="detail-divider"></div>
+          
+          <!-- Key Benefits -->
+          <div class="detail-section">
+            <h3>Key Benefits</h3>
+            <ul id="detail-benefits">
+              <!-- Benefits will be dynamically added via JS -->
+            </ul>
+          </div>
+          
+          <div class="detail-divider"></div>
+          
+          <!-- Active Ingredients -->
+          <div class="detail-section">
+            <h3>Active Ingredients</h3>
+            <div class="ingredients-list" id="detail-ingredients">
+              <!-- Ingredients will be dynamically added via JS -->
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 AquaDrop. Premium Eye Wellness.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/carousel.js"></script> <!-- For product data -->
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>
