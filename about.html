@@ -4,64 +4,68 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — AquaDrop</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/about.css" />
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- NAVIGATION -->
   <nav>
     <a class="logo" href="index.html">
-      <svg class="logo-icon" viewBox="0 0 28 28" fill="none">
+      <svg class="logo-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M14 3C14 3 7 11 7 17a7 7 0 0 0 14 0c0-6-7-14-7-14z" fill="currentColor" opacity="0.85"/>
-        <path d="M10 20c0 2.2 1.8 4 4 4" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
       <span class="logo-text">AquaDrop</span>
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
       <li><a href="about.html" class="active">About</a></li>
     </ul>
   </nav>
 
-  <!-- ABOUT CONTENT -->
-  <div class="about-page">
-    <h1>About AquaDrop</h1>
-    <p>AquaDrop was born from a simple belief: eye care should feel as natural as blinking. We combine advanced hydration science with gentle, preservative-conscious formulas to deliver comfort that lasts.</p>
-    <p>Our team of ophthalmologists and biochemists work together to create drops that respect the delicate balance of your eyes — no unnecessary additives, no harsh chemicals, just pure relief.</p>
-    <p>Whether you spend your days in front of screens, under bright lights, or in dry climates, AquaDrop is designed to keep your vision crisp and your eyes refreshed.</p>
+  <!-- ABOUT PAGE CONTENT -->
+  <div class="about-page reveal">
+    <h1>Our Science, Your Sight</h1>
+    
+    <p>AquaDrop was founded on the principle that eye wellness should be backed by rigorous clinical data but delivered with the gentleness of nature. Our laboratory specializes in ophthalmic hydration science, dedicated to advancing the field of preventive eye care.</p>
+    
+    <p>We leverage advanced Hyaluronic Acid (HA) matrices to create a longer-lasting tear film, reducing the need for frequent re-application and improving patient quality of life in increasingly digital environments. Each formulation undergoes extensive biocompatibility testing and clinical trials to ensure both safety and efficacy.</p>
+
+    <p>Our research team collaborates with leading ophthalmologists and optometrists worldwide to develop solutions that address the evolving needs of modern eye care. From digital eye strain to post-surgical recovery, we're committed to delivering precision-engineered products that make a real difference in people's lives.</p>
 
     <div class="about-divider"></div>
 
+    <!-- Statistics -->
     <div class="about-stats">
       <div class="stat-item">
         <h3>98%</h3>
-        <p>Patient satisfaction rate</p>
+        <p>Success Rate</p>
       </div>
       <div class="stat-item">
         <h3>12+</h3>
-        <p>Years of clinical research</p>
+        <p>Clinical Patents</p>
       </div>
       <div class="stat-item">
         <h3>3M+</h3>
-        <p>Happy users worldwide</p>
+        <p>Global Users</p>
       </div>
     </div>
   </div>
 
   <!-- FOOTER -->
   <footer>
-    <div class="logo">
-      <svg class="logo-icon" viewBox="0 0 28 28" fill="none">
-        <path d="M14 3C14 3 7 11 7 17a7 7 0 0 0 14 0c0-6-7-14-7-14z" fill="currentColor" opacity="0.85"/>
-      </svg>
-      <span class="logo-text">AquaDrop</span>
-    </div>
-    <p>© 2026 AquaDrop. All rights reserved.</p>
+    <p>&copy; 2026 AquaDrop. Premium Ophthalmic Care.</p>
   </footer>
 
+  <!-- Scripts -->
   <script src="js/main.js"></script>
-
 </body>
 </html>
