@@ -1,92 +1,73 @@
-// 1. PRODUCT DATA (JSON)
+// 1. EXTENDED PRODUCT DATA
 const productData = {
   'hytears': {
     name: 'AquaDrop Classic',
     price: '$18.00',
-    img: 'images/hytears.png',
+    angles: ['images/hytears.png', 'images/hytears_angle2.png', 'images/hytears_box.png'], 
     desc: 'Indicated for mild digital eye strain and environmental dryness. Features a balanced electrolyte formula that mimics natural tears.'
   },
   'moseye': {
     name: 'HydraRelief',
     price: '$24.00',
-    img: 'images/moseye.jpeg',
+    angles: ['images/moseye.jpeg', 'images/moseye_side.png'],
     desc: 'Preservative-free solution for chronic dry eye and post-operative care. Advanced Hyaluronic Acid base for 8-hour retention.'
   },
   'motoeye': {
     name: 'AllergyCalm',
     price: '$21.00',
-    img: 'images/motoeye.png',
+    angles: ['images/motoeye.png', 'images/motoeye_label.png'],
     desc: 'Triple-action antihistamine formula. Targeted relief for redness and itching caused by pollen, pet dander, and dust.'
   },
   'pegeye': {
     name: 'ReliefPlus',
     price: '$21.00',
-    img: 'images/pegeye.png',
-    desc: 'Enhanced moisture lock technology. Specifically formulated for those living in high-altitude or low-humidity environments.'
+    angles: ['images/pegeye.png'],
+    desc: 'High-viscosity formula for severe dryness. Provides a long-lasting protective shield for the corneal surface.'
   },
   'tobeye': {
-    name: 'NightGuard Gel',
+    name: 'NightGuard',
     price: '$21.00',
-    img: 'images/tobeye.jpeg',
-    desc: 'Intensive overnight therapy. A thicker gel consistency that provides a protective shield while you sleep.'
+    angles: ['images/tobeye.jpeg'],
+    desc: 'Intensive overnight relief. Designed to be applied before sleep to prevent morning dryness and irritation.'
   }
 };
 
-// 2. MODAL LOGIC (Global Functions)
-window.openProduct = function(key) {
+// 2. SHOWCASE LOGIC
+function showProductDetails(key) {
   const data = productData[key];
-  if(!data) return;
-
-  document.getElementById('modal-name').innerText = data.name;
-  document.getElementById('modal-price').innerText = data.price;
-  document.getElementById('modal-desc').innerText = data.desc;
-  document.getElementById('modal-img').src = data.img;
+  const section = document.getElementById('product-showcase');
   
-  document.getElementById('product-modal').style.display = 'block';
-  document.body.style.overflow = 'hidden'; 
-};
+  // Update Content
+  document.getElementById('detail-name').innerText = data.name;
+  document.getElementById('detail-price').innerText = data.price;
+  document.getElementById('detail-desc').innerText = data.desc;
+  
+  // Set Main Image
+  const mainImg = document.getElementById('detail-main-img');
+  mainImg.src = data.angles[0];
 
-window.closeProduct = function() {
-  document.getElementById('product-modal').style.display = 'none';
-  document.body.style.overflow = 'auto';
-};
+  // Generate Thumbnails
+  const thumbContainer = document.getElementById('detail-thumbnails');
+  thumbContainer.innerHTML = '';
+  data.angles.forEach(src => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.onclick = () => { mainImg.src = src; };
+    thumbContainer.appendChild(img);
+  });
 
-// 3. SMOOTH CAROUSEL LOGIC
-document.addEventListener('DOMContentLoaded', () => {
-  let current = 0;
-  const slides = document.querySelectorAll('.carousel-slide');
-  const total = slides.length;
+  // Smooth Scroll to Showcase
+  window.scrollTo({
+    top: section.offsetTop - 80,
+    behavior: 'smooth'
+  });
+}
+
+// 3. CAROUSEL MOVEMENT
+let currentIndex = 0;
+function moveCarousel(direction) {
   const inner = document.getElementById('carousel-inner');
-  const dotsEl = document.getElementById('dots');
-
-  if (!inner || total === 0) return;
-
-  // Build dots dynamically based on number of slides
-  slides.forEach((_, i) => {
-    const d = document.createElement('div');
-    d.className = 'dot' + (i === 0 ? ' active' : '');
-    d.addEventListener('click', () => goTo(i));
-    dotsEl.appendChild(d);
-  });
-
-  function goTo(n) {
-    current = (n + total) % total;
-    inner.style.transform = `translateX(-${current * 100}%)`;
-    
-    // Update dots
-    document.querySelectorAll('.dot').forEach((d, i) =>
-      d.classList.toggle('active', i === current));
-  }
-
-  // Globalize move function for HTML buttons
-  window.moveCarousel = (dir) => goTo(current + dir);
-
-  // Auto-advance every 4 seconds
-  let autoSlide = setInterval(() => window.moveCarousel(1), 4000);
-
-  // Pause auto-slide when user interacts
-  inner.addEventListener('mouseenter', () => clearInterval(autoSlide));
-  inner.addEventListener('mouseleave', () => {
-    autoSlide = setInterval(() => window.moveCarousel(1), 4000);
-  });
-});
+  const slides = document.querySelectorAll('.carousel-slide');
+  currentIndex = (currentIndex + direction + slides.length) % slides.length;
+  inner.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
