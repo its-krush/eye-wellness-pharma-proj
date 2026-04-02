@@ -2,102 +2,102 @@
 const productData = {
   'hytears': {
     name: 'Hytears Eye Drop',
-    displayName: 'AquaDrop Classic',
-    price: '$18.00',
+    displayName: 'Hytears Eye Drop',
+    price: '₹430.00',
     images: [
-      'images/hytears.png',
-      'images/hytears.png', // In production, these would be different angles
-      'images/hytears.png'
+      'images/Eye Drops/HYTEARS/20260331_092915.jpg',
+      'images/Eye Drops/HYTEARS/20260331_092924.jpg',
+      'images/Eye Drops/HYTEARS/20260331_092932.jpg'
     ],
-    shortDesc: 'Indicated for mild digital eye strain and environmental dryness.',
-    desc: 'Indicated for mild digital eye strain and environmental dryness. Features a balanced electrolyte formula that mimics natural tears.',
-    fullDesc: 'AquaDrop Classic is specifically formulated for individuals experiencing mild to moderate digital eye strain, environmental dryness, and occasional discomfort. The balanced electrolyte formula closely mimics the natural composition of human tears, providing immediate relief and long-lasting comfort.',
-    ingredients: ['Sodium Hyaluronate', 'Electrolyte Complex', 'Purified Water', 'pH Buffers'],
+    shortDesc: 'Sodium hyaluronate eye drops formulated to support ocular lubrication.',
+    desc: 'Sodium hyaluronate eye drops formulated to support tear-film stability and help relieve dryness.',
+    fullDesc: 'Hytears is a sodium hyaluronate ophthalmic lubricant formulated to support tear-film stability and relieve dryness. The pack lists sodium hyaluronate 0.3% w/v with stabilized oxychloro complex 0.005% w/v in a sterile aqueous base.',
+    ingredients: ['Sodium Hyaluronate 0.3% w/v', 'Stabilized Oxychloro Complex 0.005% w/v'],
     benefits: [
-      'Provides immediate relief from dryness',
-      'Safe for daily use',
-      'Compatible with contact lenses',
-      'Preservative-free formula'
+      'Helps lubricate dry and irritated eyes',
+      'Supports tear-film stability',
+      'Sterile ophthalmic solution for external use',
+      'Suitable where sodium hyaluronate-based hydration is needed'
     ]
   },
   'moseye': {
     name: 'Moseye Eye Drop',
-    displayName: 'HydraRelief Premium',
-    price: '$24.00',
+    displayName: 'Moseye Eye Drop',
+    price: '₹190.00',
     images: [
-      'images/moseye.jpeg',
-      'images/moseye.jpeg',
-      'images/moseye.jpeg'
+      'images/Eye Drops/MOSEYE-D/20260331_092843.jpg',
+      'images/Eye Drops/MOSEYE-D/20260331_092853.jpg',
+      'images/Eye Drops/MOSEYE-D/20260331_092859.jpg'
     ],
-    shortDesc: 'Preservative-free solution for chronic dry eye and post-operative care.',
-    desc: 'Preservative-free solution for chronic dry eye and post-operative care. Advanced Hyaluronic Acid base for 8-hour retention.',
-    fullDesc: 'HydraRelief Premium features an advanced Hyaluronic Acid matrix that provides extended moisture retention for up to 8 hours. Ideal for chronic dry eye sufferers and post-operative patients requiring intensive lubrication without preservatives.',
-    ingredients: ['High-Molecular HA', 'Electrolytes', 'Osmoprotectants', 'Sterile Water'],
+    shortDesc: 'Combination ophthalmic solution containing moxifloxacin and dexamethasone phosphate.',
+    desc: 'Sterile combination eye drop with moxifloxacin and dexamethasone phosphate for physician-directed ophthalmic use.',
+    fullDesc: 'Moseye is a combination ophthalmic solution containing moxifloxacin and dexamethasone phosphate. The pack lists moxifloxacin hydrochloride equivalent to moxifloxacin 0.5% w/v and dexamethasone sodium phosphate equivalent to dexamethasone phosphate 0.1% w/v, with stabilized oxychloro complex 0.005% w/v as preservative.',
+    ingredients: ['Moxifloxacin 0.5% w/v', 'Dexamethasone Phosphate 0.1% w/v', 'Stabilized Oxychloro Complex 0.005% w/v'],
     benefits: [
-      'Extended 8-hour moisture retention',
-      'Preservative-free for sensitive eyes',
-      'Ideal for post-LASIK recovery',
-      'Reduces inflammation'
+      'Combines antibiotic and anti-inflammatory action',
+      'Formulated as a sterile ophthalmic solution',
+      'Supports physician-directed management of eye infection and inflammation',
+      'Convenient combination drop format'
     ]
   },
   'motoeye': {
     name: 'Motoeye Eye Drop',
-    displayName: 'AllergyCalm Pro',
-    price: '$21.00',
+    displayName: 'Motoeye Eye Drop',
+    price: '₹190.00',
     images: [
-      'images/motoeye.png',
-      'images/motoeye.png',
-      'images/motoeye.png'
+      'images/Eye Drops/MOTOEYE/20260331_092815.jpg',
+      'images/Eye Drops/MOTOEYE/20260331_092828.jpg',
+      'images/Eye Drops/MOTOEYE/20260331_092835.jpg'
     ],
-    shortDesc: 'Triple-action antihistamine formula for allergy relief.',
-    desc: 'Triple-action antihistamine formula. Targeted relief for redness and itching caused by pollen, pet dander, and dust.',
-    fullDesc: 'AllergyCalm Pro delivers triple-action relief through advanced antihistamine technology. Specifically formulated to combat seasonal and environmental allergens including pollen, pet dander, dust mites, and airborne irritants.',
-    ingredients: ['Antihistamine Complex', 'Anti-inflammatory Agents', 'Soothing Botanicals', 'Isotonic Base'],
+    shortDesc: 'Combination ophthalmic solution with moxifloxacin and tobramycin.',
+    desc: 'Sterile eye drop combining moxifloxacin and tobramycin in a single ophthalmic solution.',
+    fullDesc: 'Motoeye is an ophthalmic solution combining moxifloxacin hydrochloride equivalent to moxifloxacin 0.5% w/v with tobramycin sulphate equivalent to tobramycin 0.3% w/v. The pack also lists stabilized oxychloro complex 0.005% w/v in a sterile aqueous base.',
+    ingredients: ['Moxifloxacin 0.5% w/v', 'Tobramycin 0.3% w/v', 'Stabilized Oxychloro Complex 0.005% w/v'],
     benefits: [
-      'Fast-acting allergy relief within minutes',
-      'Reduces redness and itching',
-      'Long-lasting protection',
-      'Non-drowsy formula'
+      'Dual-antibiotic ophthalmic formulation',
+      'Sterile solution for external ophthalmic use',
+      'Designed for physician-directed anti-infective eye care',
+      'Combines broad-spectrum antibacterial agents in one drop'
     ]
   },
   'pegeye': {
     name: 'Pegeye Eye Drop',
-    displayName: 'VisionClear',
-    price: '$21.00',
+    displayName: 'Pegeye Eye Drop',
+    price: '₹330.00',
     images: [
-      'images/pegeye.png',
-      'images/pegeye.png',
-      'images/pegeye.png'
+      'images/Eye Drops/PEGEYE/20260331_092947.jpg',
+      'images/Eye Drops/PEGEYE/20260331_092956.jpg',
+      'images/Eye Drops/PEGEYE/20260331_093006.jpg'
     ],
-    shortDesc: 'Advanced formula for optimal vision clarity.',
-    desc: 'Advanced multi-purpose formula designed to maintain optimal vision clarity and eye health throughout the day.',
-    fullDesc: 'VisionClear combines cutting-edge ophthalmic science with natural ingredients to support long-term eye health. Perfect for professionals, students, and anyone seeking to maintain crystal-clear vision in demanding visual environments.',
-    ingredients: ['Carboxymethylcellulose', 'Glycerin', 'Vitamin B12', 'Antioxidants'],
+    shortDesc: 'Lubricating eye drops with polyethylene glycol 400 and propylene glycol.',
+    desc: 'Sterile lubricating eye drop formulated with polyethylene glycol 400 and propylene glycol.',
+    fullDesc: 'Pegeye is a lubricating eye drop containing polyethylene glycol 400 and propylene glycol in a sterile aqueous base. The pack lists polyethylene glycol 400 at 0.4% w/v and propylene glycol at 0.3% w/v.',
+    ingredients: ['Polyethylene Glycol 400 0.4% w/v', 'Propylene Glycol 0.3% w/v'],
     benefits: [
-      'Enhances visual clarity',
-      'Protects against blue light damage',
-      'Suitable for extended screen time',
-      'Supports overall eye health'
+      'Lubricates the ocular surface',
+      'Helps relieve dryness and irritation',
+      'Sterile solution for external use',
+      'Uses a dual-lubricant formula for moisture support'
     ]
   },
   'tobeye': {
     name: 'Tobeye Eye Drop',
-    displayName: 'NightTime Restore',
-    price: '$21.00',
+    displayName: 'Tobeye Eye Drop',
+    price: '₹120.00',
     images: [
-      'images/tobeye.jpeg',
-      'images/tobeye.jpeg',
-      'images/tobeye.jpeg'
+      'images/Eye Drops/TOBEYE/20260331_092546.jpg',
+      'images/Eye Drops/TOBEYE/20260331_092741.jpg',
+      'images/Eye Drops/TOBEYE/20260331_092752.jpg'
     ],
-    shortDesc: 'Overnight recovery and rejuvenation formula.',
-    desc: 'Specialized overnight formula that works while you sleep to restore and rejuvenate tired eyes.',
-    fullDesc: 'NightTime Restore is uniquely formulated for overnight application, allowing your eyes to recover from daily stress while you rest. The sustained-release formula ensures continuous lubrication and healing throughout the night.',
-    ingredients: ['Extended-Release HA', 'Vitamins A & E', 'Melatonin', 'Restorative Peptides'],
+    shortDesc: 'Tobramycin ophthalmic solution in a sterile preserved base.',
+    desc: 'Sterile tobramycin eye drop formulated for physician-directed ophthalmic use.',
+    fullDesc: 'Tobeye is a tobramycin ophthalmic solution formulated as a sterile aqueous eye drop. The pack lists tobramycin 0.3% w/v with benzalkonium chloride solution equivalent to 0.02% w/v in a preserved sterile base.',
+    ingredients: ['Tobramycin 0.3% w/v', 'Benzalkonium Chloride 0.02% w/v'],
     benefits: [
-      'Overnight restoration and repair',
-      'Reduces morning eye fatigue',
-      'Intensive moisture therapy',
-      'Promotes cellular regeneration'
+      'Antibiotic ophthalmic solution',
+      'Sterile formulation for physician-directed use',
+      'Suitable for targeted antibacterial eye care',
+      'Simple single-agent tobramycin drop format'
     ]
   }
 };
@@ -109,6 +109,10 @@ function moveCarousel(direction) {
   const inner = document.getElementById('carousel-inner');
   const slides = document.querySelectorAll('.carousel-slide');
   const totalSlides = slides.length;
+
+  if (!inner || !slides.length) {
+    return;
+  }
   
   // Calculate slides per view based on screen size
   let slidesPerView = 3;
@@ -127,8 +131,11 @@ function moveCarousel(direction) {
     currentIndex = 0;
   }
   
-  const slideWidth = 100 / slidesPerView;
-  inner.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+  const slideStyle = window.getComputedStyle(inner);
+  const gap = parseFloat(slideStyle.columnGap || slideStyle.gap || '0');
+  const slideWidth = slides[0].offsetWidth;
+  const offset = currentIndex * (slideWidth + gap);
+  inner.style.transform = `translateX(-${offset}px)`;
 }
 
 // MODAL LOGIC - PREVIEW ON HOME PAGE
@@ -196,5 +203,16 @@ function stopAutoAdvance() {
 window.addEventListener('load', startAutoAdvance);
 
 // Stop on user interaction
-document.querySelector('.carousel-wrap').addEventListener('mouseenter', stopAutoAdvance);
-document.querySelector('.carousel-wrap').addEventListener('mouseleave', startAutoAdvance);
+window.addEventListener('load', () => {
+  const carouselWrap = document.querySelector('.carousel-wrap');
+
+  if (carouselWrap) {
+    carouselWrap.addEventListener('mouseenter', stopAutoAdvance);
+    carouselWrap.addEventListener('mouseleave', startAutoAdvance);
+    moveCarousel(0);
+  }
+});
+
+window.addEventListener('resize', () => {
+  moveCarousel(0);
+});
