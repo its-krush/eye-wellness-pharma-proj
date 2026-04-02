@@ -1,3 +1,4 @@
+
 :root {
   /* Color Palette from provided image */
   --primary: #7B6EE0;
@@ -80,10 +81,17 @@ nav.scrolled {
   filter: drop-shadow(0 2px 4px rgba(123, 110, 224, 0.2));
 }
 
+.logo-image {
+  width: 62px;
+  height: 62px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .logo-text {
   font-family: var(--font-accent);
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   letter-spacing: -0.5px;
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
   -webkit-background-clip: text;
@@ -226,6 +234,19 @@ footer p {
   
   .nav-links a {
     font-size: 0.85rem;
+  }
+
+  .logo {
+    gap: 10px;
+  }
+
+  .logo-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .logo-text {
+    font-size: 0.9rem;
   }
   
   :root {
