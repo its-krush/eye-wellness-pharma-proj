@@ -80,7 +80,8 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  line-height: 1.1;
+  line-height: 1.18;
+  padding-bottom: 0.12em;
   animation: fadeIn 0.8s ease-out 0.2s both;
   position: relative;
   z-index: 1;
@@ -147,6 +148,8 @@
 .carousel-track {
   overflow: hidden;
   border-radius: 24px;
+  padding-top: 12px;
+  margin-top: -12px;
 }
 
 .carousel-inner {
@@ -159,6 +162,8 @@
   min-width: calc(33.333% - 20px);
   cursor: pointer;
   transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-card {
@@ -174,13 +179,12 @@
 .product-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: linear-gradient(135deg, rgba(123, 110, 224, 0.05) 0%, transparent 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
+  border-radius: inherit;
+  pointer-events: none;
 }
 
 .carousel-slide:hover .product-card {
@@ -224,6 +228,7 @@
   color: var(--text);
   margin: 16px 0 8px;
   text-align: center;
+  min-height: 3.2em;
 }
 
 .product-price {
@@ -231,6 +236,8 @@
   font-weight: 700;
   font-size: 1.3rem;
   text-align: center;
+  line-height: 1.25;
+  padding-bottom: 0.12em;
 }
 
 /* CAROUSEL BUTTONS */
@@ -411,7 +418,23 @@
   }
   
   .carousel-wrap {
-    padding: 40px 20px;
+    padding: 30px 16px;
+  }
+
+  .carousel-inner {
+    gap: 16px;
+  }
+
+  .product-card {
+    padding: 24px;
+  }
+
+  .product-placeholder {
+    height: 240px;
+  }
+
+  .product-image {
+    padding: 12px;
   }
   
   .modal-content {
