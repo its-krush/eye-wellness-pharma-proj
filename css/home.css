@@ -306,6 +306,11 @@
   animation: slideUpModal 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.modal-content::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 @keyframes slideUpModal {
   from {
     opacity: 0;
@@ -438,16 +443,41 @@
   }
   
   .modal-content {
-    margin: 10% 5%;
-    padding: 30px 20px;
+    margin: 16px auto;
+    width: calc(100% - 24px);
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding: 48px 18px 24px;
   }
   
   .modal-body {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 18px;
+  }
+
+  .modal-img-wrap {
+    height: 220px;
+    padding: 18px;
+  }
+
+  .modal-info h2 {
+    font-size: 1.65rem;
+  }
+
+  .modal-price {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+  }
+
+  .modal-info p {
+    line-height: 1.65;
+    margin-bottom: 18px;
   }
   
   .modal-cta {
     flex-direction: column;
+    margin-top: 20px;
   }
 }
